@@ -41,6 +41,6 @@ RUN pip3 install matplotlib
 #copy data into container
 ADD --chown=repro:sudo ./data/ data/
 ADD --chown=repro:sudo ./source source/
-ADD --chown=repro:sudo ./Paper "Paper"/
+ADD --chown=repro:sudo ./paper paper/
 
 USER repro
