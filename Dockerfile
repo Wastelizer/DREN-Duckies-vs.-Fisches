@@ -1,3 +1,4 @@
+
 # Docker container for a reproduction package for the artificial business
 # scenario "Duckies vs. Fishes in cotext of the portfolio exame in 
 # reprodusibility engineering
@@ -19,7 +20,7 @@ ENV LC_ALL="C.UTF-8"
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		nano \
 		python3 \
-		python3-pip \
+		python3-pip \		
 		sudo \
 		texlive-base \
 		texlive-fonts-recommended \
@@ -27,13 +28,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		texlive-publishers 
 
 # Add user
-RUN useradd -m -G sudo -s /bin/bash repro && echo "repro:repro" | chpasswd
+RUN useradd -ms /bin/bash repro && echo "repro:repro" | chpasswd && adduser repro sudo
 RUN usermod -a -G staff repro
 
-USER repro
 WORKDIR /home/repro
 
 
 #install required python modules
-RUN pip install pandas
-RUN pip install matplotlib
+RUN pip3 install pandas
+RUN pip3 install matplotlib
+
+#copy data into container
+ADD --chown=repro:sudo ./data/ data/
+ADD --chown=repro:sudo ./source source/
+ADD --chown=repro:sudo ./Paper "Paper"/
+
+USER repro
