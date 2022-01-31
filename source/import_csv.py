@@ -38,7 +38,7 @@ def dataVisualisation():
     plt.margins(x=0)
     plt.grid()
     plt.legend()
-    plt.savefig('../Paper/fig_historical_sales.pdf', format='pdf')
+    plt.savefig('../paper/fig_historical_sales.pdf', format='pdf')
     #plt.show()
     
 dataImport()

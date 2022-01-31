@@ -28,9 +28,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		texlive-publishers 
 
 # Add user
-RUN useradd -ms /bin/bash repro && echo "repro:repro" | chpasswd && adduser repro sudo
-RUN usermod -a -G staff repro
-
+RUN useradd -m -G sudo -s /bin/bash repro && echo "repro:repro" | chpasswd
+USER repro
 WORKDIR /home/repro
 
 
@@ -39,8 +38,13 @@ RUN pip3 install pandas
 RUN pip3 install matplotlib
 
 #copy data into container
-ADD --chown=repro:sudo ./data/ data/
-ADD --chown=repro:sudo ./source source/
-ADD --chown=repro:sudo ./paper paper/
+ADD --chown=repro data ./data
+ADD --chown=repro source ./source
+ADD --chown=repro paper ./paper
 
+#add permissions to the files
+USER root
+RUN chmod -R 775 ./data
+RUN chmod -R 775 ./source
+RUN chmod -R 775 ./paper
 USER repro
