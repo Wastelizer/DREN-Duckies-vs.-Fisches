@@ -2,6 +2,9 @@
 \usepackage{blindtext}
 \usepackage{multicol}
 \usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+
  \geometry{
  a4paper,
  total={170mm,257mm},
@@ -10,7 +13,10 @@
  top=10mm,
  bottom=15mm
  }
-\usepackage{graphicx}
+
+\setlength\abovecaptionskip{1pt}
+\setlength\belowcaptionskip{1pt}
+
 \title{\textbf{Reproduction Package for an artificial business szenario}}
 \author{Sebastian Sippl  \\
 	OTH-Regensburg  \\
@@ -24,8 +30,6 @@
 \begin{document}
 
 \maketitle
-
-
 \begin{abstract}
 This paper deals with a reproduction package for an artificial business szenario. This szenario addresses an optimazation problem wich is solved using a Microsoft-Excel-Plugin called Solver. This paper introduce this concrete szenario and represents the results. After that a reproduction package will be prepared to ensure a easy way to reproduze the result from this szenario.
 \end{abstract}
@@ -33,15 +37,11 @@ This paper deals with a reproduction package for an artificial business szenario
 \begin{multicols}{2}
 
 \section{Introduction}
-The Book "Head First Data Analysis" \ref{Book!} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. 
+The Book "Head First Data Analysis" \cite{cite_key1}} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
 
-\section{Variables}
-Constraints are variables, which can not be controlled and therfore limits the object you want to optimize. For the production of rubber duckies and fishes this constraints can be the available time for the production, the quantity of rubber need for fishes and duckies and the profit for one duck and one fish.
+\section{Variables \& Optimization}
+Constraints are variables, which can not be controlled and therfore limits the object you want to optimize. For the production of rubber duckies and fishes this constraints can be the available time for the production, the quantity of rubber need for fishes and duckies and the profit for one duck and one fish. Decision Variables on the other side are variables, which can be controlled. This means the manufacturer can decide how many duckies and fishes they will produce. So this are the parameters, which can actively be changed. 
 
-Decision Variables on the other side are variables, which can be controlled. This means the manufacturer can decide how many duckies and fishes they will produce. So this are the parameters, which can actively be changed. 
-
-
-\section{Optimization Problem}
 To maximize or minimize something by changing some variables is called an optimization problem. An optimization problem links the constraints, decision varibales and the object you want to optimize together into a so called objective function, which is described as following
 \begin{equation}
 c_{1}\cdot x_{1} + c_{1}\cdot x_{1} = P
@@ -52,21 +52,21 @@ p_{d}\cdot x_{d} + p_{f}\cdot x_{f} = P
 \end{equation}
 where $p$ refers to the profit of one fish (f) and on duck (d) and $x$ to the number of ducks and fishes and $P$ to the total profit.
 
-\section{Feasible Region}
-As described, the constraints limits the Profit. For example, the manufacturer has a production time for max. 400 duckies and max. 300 fishes. The so called feasible region can be visual in figure 1. Adding a other constraint restricts this feasible region. For example, the manufacturer has a quantity of rubber to produce only 400 duckies and no fishes or 300 fishes and no ducks. This two constraints together is shown in figure 2. Alone in this litle feasble region (vgl. fig 2) there are tones of possible product mixes. \\ \\ \\ \\ \\ \\
+\section{Feasible Region \& Excel Solver}
+As described, the constraints limits the Profit. For example, the manufacturer has a production time for max. 400 duckies and max. 300 fishes. Adding a other constraint restricts this feasible region. For example, the manufacturer has a quantity of rubber to produce only 400 duckies and no fishes or 300 fishes and no ducks. All this constraints together is shown in \ref{fig:feasible}. Alone in this litle feasble region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manualy calculation of all possible product mixes isn't very effizient. The Microsoft-Excel-Plugin \glqq Solver\grqq{} helps to calculate the optimal product mix. This solver takes all your variables and the opjective function to calculate the best product mix. The calculated product mix with the given variables is to produce 400 duckies and 80 fishes with a total Profit of 2320\$.
 
-fig1        fig2
+\begin{center}
+\includegraphics[scale=0.47]{feasible_region.pdf}
+\captionof{figure}{The feasible region.}\label{fig:feasible}
+\end{center}
+
+This model doesn't consider what people will buy. So it is important to take care of sales data from the past. Figure \ref{fig:hist sales} shows some historical sales data given in a Excel-Table. An assumption is that the saled duckies and fishes are negativly connected. Adding a new constraint to the solver, wich says, that next month only 150 ducks and 50 fishes will be buyed by the people.
 
 
-\section{Solver \& Assumptions from Data}
-A manualy calculation of all possible product mixes isn't very effizient. The Microsoft-Excel-Plugin \glqq Solver\grqq{} helps to calculate the optimal product mix. This solver takes all your variables and the opjective function to calculate the best product mix. The calculated product mix with the given variables is to produce 400 duckies and 80 fishes with a total Profit of 2320\$.
-
-This model doesn't consider what people will buy. So it is important to take care of sales data from the past. Fig.3 shows some historical sales data, given in a Excel-Table. An assumption is that the saled duckies and fishes are negativly connected. Adding a new constraint to the solver, wich says, that next month only 150 ducks and 50 fishes will be buyed by the people.
-
-
-\centering
-\includegraphics[scale=0.5]{fig_historical_sales.pdf}
-
+\begin{center}
+\includegraphics[scale=0.47]{fig_historical_sales.pdf}
+\captionof{figure}{Historical sales data}\label{fig:hist sales}
+\end{center}
 
 \end{multicols}
 \begin{center}
@@ -92,6 +92,13 @@ This model doesn't consider what people will buy. So it is important to take car
 \section{Zenodo / Github}
 In order to make the development of the project traceable, all extensions are documented in a Git repository and uploaded to the website \texttt{GitHub.com}. In addition, it is possible to work on a project with several people at the same time. However, GitHub is not suitable for long-term documentation of research results because there is no guarantee that the repository will remain available for decades to come. For this reason, Zenodo are used.
 Zenodo is funded by public funds from the EU and is there to keep research results available over the long term. With a clear DOI, other researchers can also refer to these publications and use them as a source in their work.
+
+
+\begin{thebibliography}{2}
+ \bibitem[1]{cite_key1} Michael Milton, "Optimization: Take It to the Max," in  \textit{Head First Data Analysis}, O'Reilly Media Inc, 2009, pp. 75-109
+
+\end{thebibliography}
+
 
 \end{multicols}
 \end{document}
