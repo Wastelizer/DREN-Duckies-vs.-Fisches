@@ -37,7 +37,7 @@ This paper deals with a reproduction package for an artificial business szenario
 \begin{multicols}{2}
 
 \section{Introduction}
-The Book "Head First Data Analysis" \cite{cite_key1}} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
+The Book "Head First Data Analysis" \cite{micheal}} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
 
 \section{Variables \& Optimization}
 Constraints are variables, which can not be controlled and therfore limits the object you want to optimize. For the production of rubber duckies and fishes this constraints can be the available time for the production, the quantity of rubber need for fishes and duckies and the profit for one duck and one fish. Decision Variables on the other side are variables, which can be controlled. This means the manufacturer can decide how many duckies and fishes they will produce. So this are the parameters, which can actively be changed. 
@@ -50,10 +50,10 @@ where $c$ refers to the constraints, $x$ to the decision variables and $P$ to th
 \begin{equation}
 p_{d}\cdot x_{d} + p_{f}\cdot x_{f} = P
 \end{equation}
-where $p$ refers to the profit of one fish (f) and on duck (d) and $x$ to the number of ducks and fishes and $P$ to the total profit.
+where $p$ refers to the profit of one fish (f) and one duck (d) and $x$ to the number of ducks and fishes and $P$ to the total profit.
 
 \section{Feasible Region \& Excel Solver}
-As described, the constraints limits the Profit. For example, the manufacturer has a production time for max. 400 duckies and max. 300 fishes. Adding a other constraint restricts this feasible region. For example, the manufacturer has a quantity of rubber to produce only 400 duckies and no fishes or 300 fishes and no ducks. All this constraints together is shown in \ref{fig:feasible}. Alone in this litle feasble region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manualy calculation of all possible product mixes isn't very effizient. The Microsoft-Excel-Plugin \glqq Solver\grqq{} helps to calculate the optimal product mix. This solver takes all your variables and the opjective function to calculate the best product mix. The calculated product mix with the given variables is to produce 400 duckies and 80 fishes with a total Profit of 2320\$.
+As described, the constraints limits the Profit. For example, the manufacturer has a production time for max. 400 duckies and max. 300 fishes. Adding a other constraint restricts this feasible region. For example, the manufacturer has a quantity of rubber to produce only 400 duckies and no fishes or 300 fishes and no ducks. All this constraints together is shown in \ref{fig:feasible}. Alone in this litle feasble region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manualy calculation of all possible product mixes isn't very effizient. The Microsoft-Excel Plugin \textit{Solver} \cite{microsoft} helps to calculate the optimal product mix. This solver takes all variables and the opjective function to calculate the best product mix. The calculated product mix with the given variables is to produce 400 duckies and 80 fishes with a total Profit of 2320\$.
 
 \begin{center}
 \includegraphics[scale=0.47]{feasible_region.pdf}
@@ -68,21 +68,15 @@ This model doesn't consider what people will buy. So it is important to take car
 \captionof{figure}{Historical sales data}\label{fig:hist sales}
 \end{center}
 
-\end{multicols}
-\begin{center}
-\section*{Reproduction Package}
-\end{center}
-\begin{multicols}{2}
+\section{Reproduction Package}
+The goal of this reproduction package is to ensure an easy way to replicate all results from the upper introduced szenarion for everyone and everywhere. Furthermore this package should disregard dependencies.
 
-\section{Solver in Python}
-- Beschreiben
 
-- Begründen warum die gleichen Ergebnisse rauskommen
 
-\section{Daten}
-- Beschreiben 
+\section{Declouping Dependency}
+To solve the optimization problem the Microsoft-Excel Plugin \textit{Solver} is used. But this will lead to a problem because not everyone has access to proprietary products like Microsoft-Excel. The "Solver" adjusts the values of the decision variables to satisfy the limits on the constraints and produce the result you want \cite{microsoft}. A Python skript that calculates every combination of the desicion variables can be used to achieve the functionality of the Excel \textit{Solver}. Constraints can be adjusted via a command line interface to change the limits. 
 
-- Begründen warum csv besser ist 
+Another dependency is the use of the historical sales data in \textit{xls} format, which is used by Excel. One lightweighted data format is column seperated values (\textit{csv}). This is a text file which seperates the values by commas and therefore a good format for this reproduction package. 
 
 \section{Docker}
 - Beschreiben
@@ -95,7 +89,9 @@ Zenodo is funded by public funds from the EU and is there to keep research resul
 
 
 \begin{thebibliography}{2}
- \bibitem[1]{cite_key1} Michael Milton, "Optimization: Take It to the Max," in  \textit{Head First Data Analysis}, O'Reilly Media Inc, 2009, pp. 75-109
+ \bibitem[1]{micheal} Michael Milton, "Optimization: Take It to the Max," in  \textit{Head First Data Analysis}, O'Reilly Media Inc, 2009, pp. 75-109
+ 
+ \bibitem [2]{microsoft} Microsoft, 2022, \url{https://support.microsoft.com/en-us/office/define-and-solve-a-problem-by-using-solver-5d1a388f-079d-43ac-a7eb-f63e45925040} (accessed on 03.02.2022)
 
 \end{thebibliography}
 
