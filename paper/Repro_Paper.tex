@@ -4,7 +4,7 @@
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{caption}
-
+\usepackage{url}
  \geometry{
  a4paper,
  total={170mm,257mm},
@@ -37,7 +37,7 @@ This paper deals with a reproduction package for an artificial business szenario
 \begin{multicols}{2}
 
 \section{Introduction}
-The Book "Head First Data Analysis" \cite{micheal}} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
+The Book "Head First Data Analysis" \cite{micheal} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
 
 \section{Variables \& Optimization}
 Constraints are variables, which can not be controlled and therfore limits the object you want to optimize. For the production of rubber duckies and fishes this constraints can be the available time for the production, the quantity of rubber need for fishes and duckies and the profit for one duck and one fish. Decision Variables on the other side are variables, which can be controlled. This means the manufacturer can decide how many duckies and fishes they will produce. So this are the parameters, which can actively be changed. 
@@ -71,6 +71,9 @@ This model doesn't consider what people will buy. So it is important to take car
 \section{Reproduction Package}
 The goal of this reproduction package is to ensure an easy way to replicate all results from the upper introduced szenarion for everyone and everywhere. Furthermore this package should disregard dependencies.
 
+\section{Open Source instead of proprietary Tools}
+In order to achieve broad availability and thus good reproducibility of scientific experiments, it is absolutely necessary to do without proprietary software as far as possible. There is an open source alternative for most common tools such as Word, Excel or Matlab, which in most cases meets all requirements. Publishing the source code ensures long-term availability of the software. There is no conventional manufacturer with profit intentions from the licenses of the tools. This also ensures that replication fails due to missing licenses.
+In our case, we deliberately use the open source programming language python to evaluate the data instead of Microsoft Excel. The open source program LaTex is used for the visualization and documentation of the results. This offers even more possibilities with regard to the automated creation of the documentation as in MS Word. As a result, LaTex creates a PDF document, which is also made available with low-threshold access through open source PDF readers.
 
 
 \section{Declouping Dependency}
@@ -91,7 +94,7 @@ Zenodo is funded by public funds from the EU and is there to keep research resul
 \begin{thebibliography}{2}
  \bibitem[1]{micheal} Michael Milton, "Optimization: Take It to the Max," in  \textit{Head First Data Analysis}, O'Reilly Media Inc, 2009, pp. 75-109
  
- \bibitem [2]{microsoft} Microsoft, 2022, \url{https://support.microsoft.com/en-us/office/define-and-solve-a-problem-by-using-solver-5d1a388f-079d-43ac-a7eb-f63e45925040} (accessed on 03.02.2022)
+ \bibitem[2]{microsoft} Microsoft, 2022, \url{https://support.microsoft.com/en-us/office/define-and-solve-a-problem-by-using-solver-5d1a388f-079d-43ac-a7eb-f63e45925040} (accessed on 03.02.2022)
 
 \end{thebibliography}
 
