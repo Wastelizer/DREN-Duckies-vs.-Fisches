@@ -69,6 +69,7 @@ def plot_feasible_region():
 	plt.xlabel('fishes')
 	plt.scatter(80, 400, marker='o', color='k', label='product mix')
 	plt.legend(loc=5)
+	plt.text(80, 400 + 2, '(80, 400, 2350$)')
 	plt.savefig('../paper/feasible_region.pdf', format='pdf')
     
 dataImport()

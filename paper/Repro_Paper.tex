@@ -71,15 +71,18 @@ This model doesn't consider what people will buy. So it is important to take car
 \section{Reproduction Package}
 The goal of this reproduction package is to ensure an easy way to replicate all results from the upper introduced szenarion for everyone and everywhere. Furthermore this package should disregard dependencies.
 
-\section{Open Source instead of proprietary Tools}
-In order to achieve broad availability and thus good reproducibility of scientific experiments, it is absolutely necessary to do without proprietary software as far as possible. There is an open source alternative for most common tools such as Word, Excel or Matlab, which in most cases meets all requirements. Publishing the source code ensures long-term availability of the software. There is no conventional manufacturer with profit intentions from the licenses of the tools. This also ensures that replication fails due to missing licenses.
-In our case, we deliberately use the open source programming language python to evaluate the data instead of Microsoft Excel. The open source program LaTex is used for the visualization and documentation of the results. This offers even more possibilities with regard to the automated creation of the documentation as in MS Word. As a result, LaTex creates a PDF document, which is also made available with low-threshold access through open source PDF readers.
-
 
 \section{Declouping Dependency}
-To solve the optimization problem the Microsoft-Excel Plugin \textit{Solver} is used. But this will lead to a problem because not everyone has access to proprietary products like Microsoft-Excel. The "Solver" adjusts the values of the decision variables to satisfy the limits on the constraints and produce the result you want \cite{microsoft}. A Python skript that calculates every combination of the desicion variables can be used to achieve the functionality of the Excel \textit{Solver}. Constraints can be adjusted via a command line interface to change the limits. 
+In order to achieve broad availability and therefore good reproducibility of scientific experiments, it is necessary to avoid proprietary software as far as possible. There is an open source alternative for most common tools such as Microsoft (MS)-Word, MS-Excel or Matlab, which in most cases meets all requirements. Publishing the source code ensures long-term availability of the software. There is no conventional manufacturer with profit intentions from licensing the tools. This also ensures that replication fails due to missing licenses.
 
-Another dependency is the use of the historical sales data in \textit{xls} format, which is used by Excel. One lightweighted data format is column seperated values (\textit{csv}). This is a text file which seperates the values by commas and therefore a good format for this reproduction package. 
+To solve the upper introduced optimization problem the MS-Excel Plugin \textit{Solver} is used. The \textit{Solver} adjusts the values of the decision variables to satisfy the limits on the constraints and produce the result you want \cite{microsoft}. A Python skript that calculates every combination of the desicion variables can be used to achieve the functionality of the MS-Excel \textit{Solver}. Constraints can be adjusted via a command line interface to change the limits. Figure \ref{fig:feasible solver} shows the feasible region and the optimal product mix using the constraints from figure \ref{fig:feasible} whith an assumption that only 150 ducks and 50 fish will be buyed next months. The Python skript generates following result:
+
+\begin{center}
+\includegraphics[scale=0.47]{feasible_region_solver.pdf}
+\captionof{figure}{The feasible region using the python skript.}\label{fig:feasible solver}
+\end{center}
+
+Another dependency is the use of the historical sales data in \textit{XLS} format, which is used by Excel. One lightweighted data format is column seperated values (\textit{CSV}), which is a common data exchange format that is widely supported by consumer, business and scientific applications. To document the results the open source program LaTex is used, which offers posibillities to automate the creation of documents. All plots in this document are automated generated from the open source python library \textit{Matplotlib} and also automated included to this document.
 
 \section{Docker}
 - Beschreiben

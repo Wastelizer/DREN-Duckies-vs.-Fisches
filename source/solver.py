@@ -47,8 +47,8 @@ def plot_feasible_region():
 	#plot time constraint
 	plt.axhline(y=time_duck, linestyle='--', color = 'b', label='time ducks')
 	plt.axvline(x=time_fish, linestyle='--', color = 'r', label='time fishes')
-	plt.ylim(0, time_duck+100)
-	plt.xlim(0, time_fish+100)
+	plt.ylim(0, 500)
+	plt.xlim(0, 500)
 	
 	#plot pallets constraint
 	x_values = [total_pallets/pallets_per_fish, 0]
@@ -95,5 +95,6 @@ p_mix = solver()
 print(p_mix)
 
 plt.scatter(p_mix[2], p_mix[1], marker='o', color='k', label='product mix')
-plt.legend()
-plt.savefig('../paper/feasible_region.pdf', format='pdf')
+plt.text(p_mix[2], p_mix[1] + 2, f'({p_mix[2]}, {p_mix[1]}, {p_mix[0]}$)')
+plt.legend(loc=5)
+plt.savefig('../paper/feasible_region_solver.pdf', format='pdf')
