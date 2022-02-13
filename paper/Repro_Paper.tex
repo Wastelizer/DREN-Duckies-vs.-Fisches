@@ -31,63 +31,69 @@
 
 \maketitle
 \begin{abstract}
-This paper deals with a reproduction package for an artificial business szenario. This szenario addresses an optimazation problem wich is solved using a Microsoft-Excel-Plugin called Solver. This paper introduce this concrete szenario and represents the results. After that a reproduction package will be prepared to ensure a easy way to reproduze the result from this szenario.
+This paper deals with a reproduction package for an artificial business scenario. This scenario addresses an optimization problem witch is solved using a Microsoft-Excel-Plugin called Solver. This paper introduce this concrete scenario and represents the results. After that a reproduction package will be prepared to ensure a easy way to reproduce the result from this scenario.
 \end{abstract}
 
 \begin{multicols}{2}
 
 \section{Introduction}
-The Book "Head First Data Analysis" \cite{micheal} rolls out an artificial busines szeraion. A manufactorer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is baised on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
+The Book "Head First Data Analysis" \cite{micheal} rolls out an artificial business scenario. A manufacturer for rubber duckies and rubber fishes want to maximize their profit. This is done by optimizing the product mix for the quantity of duckies and fishes. The profit is based on some variables called constraints and decision variables. All following descriptions refers to the book of "Head First Data Analysis".
 
 \section{Variables \& Optimization}
-Constraints are variables, which can not be controlled and therfore limits the object you want to optimize. For the production of rubber duckies and fishes this constraints can be the available time for the production, the quantity of rubber need for fishes and duckies and the profit for one duck and one fish. Decision Variables on the other side are variables, which can be controlled. This means the manufacturer can decide how many duckies and fishes they will produce. So this are the parameters, which can actively be changed. 
+Constraints are variables, which can not be controlled and therefore limits the object you want to optimize. For the production of rubber duckies and fishes this constraints can be the available time for the production, the quantity of rubber need for fishes and duckies and the profit for one duck and one fish. Decision Variables on the other side are variables, which can be controlled. This means the manufacturer can decide how many duckies and fishes they will produce. So this are the parameters, which can actively be changed. 
 
-To maximize or minimize something by changing some variables is called an optimization problem. An optimization problem links the constraints, decision varibales and the object you want to optimize together into a so called objective function, which is described as following
+To maximize or minimize something by changing some variables is called an optimization problem. An optimization problem links the constraints, decision variables and the object you want to optimize together into a so called objective function, which is described as following
 \begin{equation}
 c_{1}\cdot x_{1} + c_{1}\cdot x_{1} = P
 \end{equation}
-where $c$ refers to the constraints, $x$ to the decision variables and $P$ to the variable you want to optimize. Regarding to the szenarion this function looks like 
+where $c$ refers to the constraints, $x$ to the decision variables and $P$ to the variable you want to optimize. Regarding to the scenario this function looks like 
 \begin{equation}
 p_{d}\cdot x_{d} + p_{f}\cdot x_{f} = P
 \end{equation}
 where $p$ refers to the profit of one fish (f) and one duck (d) and $x$ to the number of ducks and fishes and $P$ to the total profit.
 
 \section{Feasible Region \& Excel Solver}
-As described, the constraints limits the Profit. For example, the manufacturer has a production time for max. 400 duckies and max. 300 fishes. Adding a other constraint restricts this feasible region. For example, the manufacturer has a quantity of rubber to produce only 400 duckies and no fishes or 300 fishes and no ducks. All this constraints together is shown in \ref{fig:feasible}. Alone in this litle feasble region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manualy calculation of all possible product mixes isn't very effizient. The Microsoft-Excel Plugin \textit{Solver} \cite{microsoft} helps to calculate the optimal product mix. This solver takes all variables and the opjective function to calculate the best product mix. The calculated product mix with the given variables is to produce 400 duckies and 80 fishes with a total Profit of 2320\$.
+As described, the constraints limits the Profit. For example, the manufacturer has a production time for max. 400 duckies and max. 300 fishes. Adding a other constraint restricts this feasible region. For example, the manufacturer has a quantity of rubber to produce only 400 duckies and no fishes or 300 fishes and no ducks. All this constraints together is shown in \ref{fig:feasible}. Alone in this little feasible region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manually calculation of all possible product mixes isn't very efficient. The Microsoft-Excel Plugin \textit{Solver} \cite{microsoft} helps to calculate the optimal product mix. This solver takes all variables and the objective function to calculate the best product mix. The calculated product mix with the given variables is to produce 400 duckies and 80 fishes with a total Profit of 2320\$.
 
 \begin{center}
-\includegraphics[scale=0.47]{feasible_region.pdf}
+\includegraphics[scale=0.44]{feasible_region.pdf}
 \captionof{figure}{The feasible region.}\label{fig:feasible}
 \end{center}
 
-This model doesn't consider what people will buy. So it is important to take care of sales data from the past. Figure \ref{fig:hist sales} shows some historical sales data given in a Excel-Table. An assumption is that the saled duckies and fishes are negativly connected. Adding a new constraint to the solver, wich says, that next month only 150 ducks and 50 fishes will be buyed by the people.
-
+This model doesn't consider what people will buy. So it is important to take care of sales data from the past. Figure \ref{fig:hist sales} shows some historical sales data given in a Excel-Table. An assumption is that the soled duckies and fishes are negatively connected. Adding a new constraint to the solver, witch says, that next month only 150 ducks and 50 fishes will be bought.
 
 \begin{center}
-\includegraphics[scale=0.47]{fig_historical_sales.pdf}
+\includegraphics[scale=0.44]{fig_historical_sales.pdf}
 \captionof{figure}{Historical sales data}\label{fig:hist sales}
 \end{center}
 
 \section{Reproduction Package}
-The goal of this reproduction package is to ensure an easy way to replicate all results from the upper introduced szenarion for everyone and everywhere. Furthermore this package should disregard dependencies.
+The goal of this reproduction package is to ensure an easy way to replicate all results from the upper introduced scenario for everyone and everywhere. Furthermore this package should disregard dependencies and it should automatically present the results in the form of this paper. To easily deploy the package, it is build using a docker container. More on this in section \ref{sec:Docker}.
 
 
-\section{Declouping Dependency}
+\section{Decoupling Dependency}
 In order to achieve broad availability and therefore good reproducibility of scientific experiments, it is necessary to avoid proprietary software as far as possible. There is an open source alternative for most common tools such as Microsoft (MS)-Word, MS-Excel or Matlab, which in most cases meets all requirements. Publishing the source code ensures long-term availability of the software. There is no conventional manufacturer with profit intentions from licensing the tools. This also ensures that replication fails due to missing licenses.
 
-To solve the upper introduced optimization problem the MS-Excel Plugin \textit{Solver} is used. The \textit{Solver} adjusts the values of the decision variables to satisfy the limits on the constraints and produce the result you want \cite{microsoft}. A Python skript that calculates every combination of the desicion variables can be used to achieve the functionality of the MS-Excel \textit{Solver}. Constraints can be adjusted via a command line interface to change the limits. Figure \ref{fig:feasible solver} shows the feasible region and the optimal product mix using the constraints from figure \ref{fig:feasible} whith an assumption that only 150 ducks and 50 fish will be buyed next months. The Python skript generates following result:
+To solve the upper introduced optimization problem the MS-Excel Plugin \textit{Solver} is used. The \textit{Solver} adjusts the values of the decision variables to satisfy the limits on the constraints and produce the result you want \cite{microsoft}. A Python script that calculates every combination of the decision variables can be used to achieve the functionality of the MS-Excel \textit{Solver}. Constraints can be adjusted via a command line interface to change the limits. Figure \ref{fig:feasible solver} shows the feasible region and the optimal product mix using the constraints from figure \ref{fig:feasible} with an assumption that only 150 ducks and 50 fish will be bought next months. The Python script generates following result:
 
 \begin{center}
-\includegraphics[scale=0.47]{feasible_region_solver.pdf}
-\captionof{figure}{The feasible region using the python skript.}\label{fig:feasible solver}
+\includegraphics[scale=0.44]{feasible_region_solver.pdf}
+\captionof{figure}{The feasible region using the python script.}\label{fig:feasible solver}
 \end{center}
 
-Another dependency is the use of the historical sales data in \textit{XLS} format, which is used by Excel. One lightweighted data format is column seperated values (\textit{CSV}), which is a common data exchange format that is widely supported by consumer, business and scientific applications. To document the results the open source program LaTex is used, which offers posibillities to automate the creation of documents. All plots in this document are automated generated from the open source python library \textit{Matplotlib} and also automated included to this document.
+Another dependency is the use of the historical sales data in \textit{XLS} format, which is used by Excel. One light weighted data format is column separated values (\textit{CSV}), which is a common data exchange format that is widely supported by consumer, business and scientific applications. To document the results the open source program LaTex is used, which offers possibilities to automate the creation of documents. All plots in this document are automated generated from the open source python library \textit{Matplotlib} and also automated included to this document.
 
-\section{Docker}
-- Beschreiben
+\section{Docker} \label{sec:Docker}
+%\begin{itemize}
+%\item skalierbare Umgebung
+%\item Isolation (eine Anwendung darf keinen Zugriff auf andere Anwendungen haben)
+%\item Gleichzeitiger Betrieb verschiedener Versionen
+%
+%\end{itemize}
 
-- Was macht der Container
+Docker is an open source project that builds an many long familiar technologies from operating systems research. Among other thinks, LXC container, visualization of the operating system and a hash-based or Git-like versioning system. Containers are a way to package software in a format that can run isolated on a shared operating system. Unlike virtual machines (\textit{VM}), containers do not bundle a full operating system -- only libraries and settings required to make the software work are needed. This makes for efficient, lightweight, self-contained systems and guarantees that software will always run the same, regardless of where it's deployed. 
+
+To configure and distribute an application a Docker-Image is used. With a Docker image, you can launch containers with the same configuration and then share them with a team so that all team members have the same version. A Docker image also helps when projects are published that should be available for a long time. The best way to build a Docker container is to create a \textit{Dockerfile} and use the \texttt{docker build} command \cite{Docker}.
 
 \section{Zenodo / Github}
 In order to make the development of the project traceable, all extensions are documented in a Git repository and uploaded to the website \texttt{GitHub.com}. In addition, it is possible to work on a project with several people at the same time. However, GitHub is not suitable for long-term documentation of research results because there is no guarantee that the repository will remain available for decades to come. For this reason, Zenodo are used.
@@ -99,6 +105,7 @@ Zenodo is funded by public funds from the EU and is there to keep research resul
  
  \bibitem[2]{microsoft} Microsoft, 2022, \url{https://support.microsoft.com/en-us/office/define-and-solve-a-problem-by-using-solver-5d1a388f-079d-43ac-a7eb-f63e45925040} (accessed on 03.02.2022)
 
+ \bibitem[3]{Docker} Reproducible analysis and Research Transparency, 2017, \url{https://reproducible-analysis-workshop.readthedocs.io/en/latest/8.Intro-Docker.html} (accessed on 13.02.2022)
 \end{thebibliography}
 
 
