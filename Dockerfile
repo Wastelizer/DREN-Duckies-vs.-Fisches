@@ -41,6 +41,7 @@ RUN pip3 install matplotlib
 ADD --chown=repro data ./data
 ADD --chown=repro source ./source
 ADD --chown=repro paper ./paper
+ADD --chown=repro ./entrypoint.sh .
 
 #add permissions to the files
 USER root

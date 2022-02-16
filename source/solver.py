@@ -1,6 +1,11 @@
 import argparse as arg
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
+
+#path to the repro dir
+path = Path(__file__).absolute()
+repro_dir = str(path.parent.parent)
 
 
 #define commandline arguments to parse constraints to the solver
@@ -97,4 +102,4 @@ print(p_mix)
 plt.scatter(p_mix[2], p_mix[1], marker='o', color='k', label='product mix')
 plt.text(p_mix[2], p_mix[1] + 2, f'({p_mix[2]}, {p_mix[1]}, {p_mix[0]}$)')
 plt.legend(loc=5)
-plt.savefig('../paper/feasible_region_solver.pdf', format='pdf')
+plt.savefig(repro_dir + '/paper/feasible_region_solver.pdf', format='pdf')
