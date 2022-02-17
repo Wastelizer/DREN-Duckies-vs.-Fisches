@@ -34,7 +34,6 @@ WORKDIR /home/repro
 
 
 #install required python modules
-RUN pip3 install pandas
 RUN pip3 install matplotlib
 
 #copy data into container

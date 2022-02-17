@@ -11,7 +11,7 @@ docker build -t repro .
 
 docker run -it repro
 
-##run docker in interactive mode
+## run docker in interactive mode
 
 You can run the docker container in interactive mode to execute the python solver manualy.
 
