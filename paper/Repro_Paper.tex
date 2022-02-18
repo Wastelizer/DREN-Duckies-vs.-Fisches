@@ -42,18 +42,18 @@ The Book "Head First Data Analysis" \cite{micheal} rolls out an artificial busin
 \section{Variables \& Optimization}
 Constraints are variables which can not be controlled and therefore limit the object you want to optimize. For the production of rubber ducks and fish these constraints can be the available time for the production, the quantity of rubber need for fish and ducks and the profit for one duck and one fish. Decision Variables on the other side are variables which can be controlled. This means the manufacturer can decide how many ducks and fish they will produce. So this are the parameters which can actively be changed. 
 
-To maximize or minimize something by changing variables is called an optimization problem. An optimization problem links the constraints, decision variables and the object you want to optimize together into a so called objective function. This function is described as 
+To maximize or minimize something by changing variables is called an optimization problem. An optimization problem links the constraints, decision variables and the object you want to optimize together into a so called \textit{objective function}. This function is described as 
 \begin{equation}
-c_{1}\cdot x_{1} + c_{1}\cdot x_{1} = P
+c_{1}\cdot x_{1} + c_{2}\cdot x_{2} = P
 \end{equation}
 where $c$ refers to the constraints, $x$ to the decision variables and $P$ to the object you want to optimize. Regarding to the scenario this function looks like 
 \begin{equation}
 p_{d}\cdot x_{d} + p_{f}\cdot x_{f} = P
 \end{equation}
-where $p$ refers to the profit of one fish (f) and one duck (d) and $x$ to the number of ducks and fish and $P$ to the total profit.
+where $p$ refers to the profit of one fish (f) and one duck (d) and $x$ to the number of ducks and fish. $P$ is the total profit.
 
 \section{Feasible Region \& Excel Solver}\label{cap:feasible}
-As described, a constraint limits the profit. For example, the manufacturer has a production time for max. 400 ducks and max. 300 fish. Adding an other constraint restricts the profit again. The manufacturer has a quantity of rubber to produce only 400 ducks and no fish or 300 fish and no ducks. All this constraints together is shown in figure \ref{fig:feasible}. Alone in this little feasible region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manual calculation of all possible product mixes isn't very efficient. The MS-Excel-Plugin \textit{Solver} \cite{microsoft} helps to calculate the optimal product mix. This \textit{Solver} takes all variables and the objective function to calculate the best product mix. The \tesxtit{Solver} calculates a product mix with the given variables that says to produce 400 ducks and 80 fish with a total profit of 2320\$ \cite[p. 96]{micheal}.
+As described, a constraint limits the profit. For example, the manufacturer has a production time for max. 400 ducks and max. 300 fish. Adding an other constraint restricts the profit again. The manufacturer has a quantity of rubber to produce only 400 ducks and no fish or 300 fish and no ducks. All this constraints together is shown in figure \ref{fig:feasible}. Alone in this little feasible region (see figure \ref{fig:feasible}, green area) there are tones of possible product mixes. A manual calculation of all possible product mixes isn't very efficient. The MS-Excel-Plugin \textit{Solver} \cite{microsoft} helps to calculate the optimal product mix. This \textit{Solver} takes all variables and the objective function to calculate the best product mix. The \textit{Solver} calculates a product mix with the given variables that says to produce 400 ducks and 80 fish with a total profit of 2320\$ \cite[p. 96]{micheal}.
 
 \begin{center}
 \includegraphics[scale=0.43]{feasible_region.pdf}
@@ -63,7 +63,7 @@ As described, a constraint limits the profit. For example, the manufacturer has 
 This model doesn't consider what people will buy. So it is important to take care of sales data from the past. Figure \ref{fig:hist sales} shows some historical sales data given in an MS-Excel-Table (XLS)-format. An assumption is that the soled ducks and fish are negatively connected. According to this, a new constraint can be added to the model that considers prediction of future sales from the given data.
 
 \begin{center}
-\includegraphics[scale=0.43]{fig_historical_sales.pdf}
+\includegraphics[scale=0.43, trim = 0 1.5cm 0 0, clip]{fig_historical_sales.pdf}
 \captionof{figure}{Historical sales data}\label{fig:hist sales}
 \end{center}
 
@@ -86,9 +86,9 @@ The historical sales data that is givn in \textit{XLS}-format leads to another d
 \section{Docker} \label{sec:Docker}
 Docker is an open source platform for developing, shipping, and running applications. It provides the ability to package and run an application in a isolated environment called a \textit{container}. Unlike virtual machines (\textit{VM}), containers do not bundle a full operating system -- only libraries and settings required to run the application. So containers can easily shared and the receiver gets the same container that works in the same way.
 
-An \textit{image} is a read-only template with instructions for creating a Docker \textit{container}. To build an image a \textit{Dockerfile} defines the steps wich ared needed to create the image. A \textit{container} is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API. By default, a container is relatively well-isolated from other containers and its host machine \cite{Docker}. 
+An \textit{image} is a read-only template with instructions for creating a Docker \textit{container}. To build an image a \textit{Dockerfile} defines the steps which are needed to create the image. A \textit{container} is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API. By default, a container is relatively well-isolated from other containers and its host machine \cite{Docker}. 
 
-In this reproduction package the container provides the hole experimental setup including the data in \textit{CSV}-format, all Python source codes and the documentation based on \textit{LaTex}. During the build-process of the container, all required tools and libraries are installed and all artefacts are copied into the container. The Python scripts for generating the requiered data are executed via a shell script after the container has started. Finally, this document is generated automatically and copied from the container to the host PC. The container can also be started in interactive mode to retrace the functionality of the Python-Solver.
+In this reproduction package the container provides the hole experimental setup including the data in \textit{CSV}-format, all Python source codes and the documentation based on \LaTeX. During the build-process of the container, all required tools and libraries are installed and all artefacts are copied into the container. The Python scripts for generating the requiered data are executed via a shell script after the container has started. Finally, this document is generated automatically and copied from the container to the host PC. The container can also be started in interactive mode to retrace the functionality of the Python-Solver.
 
 \section{Github \& Zenodo}
 In order to make the development of the project traceable, all changes are documented in a Git repository and uploaded to the website \textit{GitHub.com}. In addition, it is possible to work on a project with several people at the same time. However, GitHub is not suitable for long-term documentation of research results because there is no guarantee that the repository will remain available for decades to come. For this reason, \textit{Zenodo} are used.
