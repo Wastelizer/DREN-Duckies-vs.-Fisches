@@ -1,22 +1,21 @@
 # DREN-Duckies-vs.-Fisches
 this is a reproduction project for an artificial busines scenario.
 
-to start an automated execution of all scripts and generation of the paper run the dispatcher.sh script.
-This will build the docker container, runs it and copies the generated paper out of the container.
+## Run automatic dispatcher
 
+To start an automated execution of all scripts and generation of the paper run the dispatcher.sh script. This will build the docker container from the Dockerfile, runs it and copies the generated paper out of the container. The generatet .pdf file is copied into the paper directory.
 
-to run the container in interactive mode execute following commands:
+## Run docker container in interactive mode
 
+To run the container in interactive mode please execute following commands:
+
+```bash
 docker build -t repro .
 
 docker run -it repro
+```
 
-## run docker in interactive mode
-
-You can run the docker container in interactive mode to execute the python solver manualy.
-
-
-please refer to the cli options:
+Now a terminal inside the container shows up. To execute the solver please refer to the cli options:
 
 usage: solver.py [-h] [--profs D F] [--times D F] [--palls D F] [--rubbs N] [--assum D F]
 
@@ -35,3 +34,23 @@ optional arguments:
   --rubbs N, -r N      total supplied rubber pallets (N) (default:50000)
 
   --assum D F, -a D F  assumption for future sales duckies (D), fishes(F)(default: None)
+  
+## Load the docker image 
+
+If you can't build an image from the given Dockerfile you can load an existing image from the given gz.tar file. Run following command:
+
+```bash
+docker load < repro_image.tar.gz 
+```
+
+To run the image with automated generation run following command:
+
+```bash
+docker run --entrypoint ./entrypoint.sh repro 
+```
+
+To run the image in interactive mode run following command:
+
+```bash
+docker run -it repro 
+```
