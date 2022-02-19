@@ -63,6 +63,11 @@ To run the image with automated generation run following command:
 ```bash
 docker run --entrypoint ./entrypoint.sh repro 
 ```
+To Copy the generated paper out of the container to the host run this two commands:
+```bash
+CONTAINER_NAME="$(docker ps -l --format "{{.Names}}")"
+docker cp $CONTAINER_NAME:home/repro/paper/Repro_Paper.pdf ./paper/Repro_Paper.pdf
+```
 
 To run the image in interactive mode run following command:
 
