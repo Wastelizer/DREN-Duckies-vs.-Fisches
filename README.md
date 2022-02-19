@@ -1,5 +1,12 @@
 # DREN-Duckies-vs.-Fisches
-this is a reproduction project for an artificial busines scenario.
+This is a reproduction project for an artificial busines scenario. This repository includes a large file of a docker image. To clone the completely repository please install the Git Large File Storage with following command:
+```bash
+sudo apt-get install git-lfs
+```
+Clone the repositry:
+```bash
+git clone https://github.com/brt30696/DREN-Duckies-vs.-Fisches.git
+```
 
 ## Run automatic dispatcher
 
@@ -17,6 +24,7 @@ docker run -it repro
 
 Now a terminal inside the container shows up. To execute the solver please refer to the cli options:
 
+```bash
 usage: solver.py [-h] [--profs D F] [--times D F] [--palls D F] [--rubbs N] [--assum D F]
 
 Add the Constraints for the Solver
@@ -34,6 +42,7 @@ optional arguments:
   --rubbs N, -r N      total supplied rubber pallets (N) (default:50000)
 
   --assum D F, -a D F  assumption for future sales duckies (D), fishes(F)(default: None)
+```
   
 ## Load the docker image 
 
